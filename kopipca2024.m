@@ -81,6 +81,7 @@ avstand_5a_5b = norm(T(5,:) - T(6,:));
 fprintf('Avstand mellom 5a og 5b: %f\n', avstand_5a_5b);  % Output the distance
 
 
+a2 = 2;
 [n2,m2] = size(X2);    % n = antall objekt (land)
                     % m = antall variablar (matvarer)
 meanX2 = mean(X2);    % Gjennomsnittet av kvar kolonne i matrisa X
