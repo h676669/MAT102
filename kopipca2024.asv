@@ -13,7 +13,7 @@ load Arbeidskrav3.mat
 
 % Antall prinsipalkomponentar eg ønskjer å finne i matrisa X
 a = 2;
-
+% Oppgave A
 % Først preprosesserer eg matrisa slik at kvar kolonne får gjennomsnitt 0
 % og standardavvis 1.
 [n,m] = size(X1);    % n = antall objekt (land)
@@ -40,6 +40,15 @@ X1norm = X1;                      % Preprosessert matrise.
     0.1956   -0.0662   -0.1336   -0.0269    0.0310   -0.1300    0.1385    0.1021    0.2422    0.0340
 %}
 
+%Oppgave B
+%{
+Grunnen for at det er viktig å preprosessere matrisen er fordi at verdiene i
+X1 ikkje er på samme verdiskala og dermed kan gjøre at nokon variabler
+ikkje får den innflytelsen som den skal ha eller får ei mye støre
+innflytelse på PCA-en en den skal ha. 
+%}
+
+%Oppgave C
 % Bruker NIPALS-metoden for å finne dei a største eigenvektorane til 
 % transponert(X)X (prinsipalkomponentane til X). 
 % NIPALS-algoritma er beskrevet i kompendiet på s.331.
@@ -73,13 +82,21 @@ hold on
 plot(0,0, 'or') %tegner inn i origo for å ha et referansepunkt
 grid on
 
+%Oppgave D
+%{
+Ved å se på scorematrisen så ser vi at 5a og 5b er veldig nærme (har liten
+forskjell mellom 5a og 5b) kvarandre og kan dermed konkludere med at
+smakspanelet er konsistent
+%}
 
+%Oppgave E
 % Finner forklart variasjon av dei a prinsipalkoeffisientane.
 trX1 = trace(X1'*X1);      % Trace av standardisert matrise X
 trT = trace(T'*T);      % Trace av scoresmatrisa
 fprintf('Forklart variasjon med %d prinsipalkomponenter er: %4.2f\n',a,trT/trX1*100);
 %Forklart variasjon med 2 prinsipalkomponenter er: 98.36
 
+%Oppgave F
 %plotter loading-martise
 figure
 scatter(P(:,1),P(:,2))
@@ -92,10 +109,11 @@ avstand = norm(T(5,:) - T(6,:));
 fprintf('Avstand mellom 5a og 5b: %f\n', avstand);
 %Avstand mellom 5a og 5b: 0.197531
 
+%Oppgave G, Svar på oppgaven er nederst i scriptet
 
 a2 = 2;
-[n2,m2] = size(X2);    % n = antall objekt (land)
-                    % m = antall variablar (matvarer)
+[n2,m2] = size(X2);   % n = antall objekt (land)
+                      % m = antall variablar (matvarer)
 meanX2 = mean(X2);    % Gjennomsnittet av kvar kolonne i matrisa X
 stdX2 = std(X2);      % Standardavviket i kvar kolonne i matrisa X.
 for j = 1:m2
@@ -175,5 +193,9 @@ fprintf('Forklart variasjon med %d prinsipalkomponenter er: %4.2f\n',a,trT2/trX2
 %{
     med å se på grafen for forrige og den nye målingene se vi at et det er
     klare grupperinger mellom måligene, med de gamle måligene på den eine
-    siden og de ny på den andre. 
+    siden og de ny på den andre. Dette tyder da at å tilsette
+    tilsetjingsstoff skapte ein stastisk signifikant forksjell i variansen
+    som blir tatt opp av de 2 første prinsipalkomponentene. Dette blir også
+    sett med at X1 med de 2 første prinsipalkomponenter tar opp 98.36% av
+    all varians og X2 tar opp 85.85%, en 12.51 forksjell
 %}
