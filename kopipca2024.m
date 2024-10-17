@@ -98,7 +98,9 @@ fprintf('Forklart variasjon med %d prinsipalkomponenter er: %4.2f\n',a,trT/trX1*
 
 %Oppgave F
 %{
-En observasjon vi kan gjøre med å se på ploten er at 
+En observasjon vi kan gjøre med å se på ploten er at det er stor forskjell
+mellomm de somn liker smaken som kjem fra melk og sukker, og de som liker
+smaken som kjem fra kakaoen. 
 %}
 %plotter loading-martise
 figure
